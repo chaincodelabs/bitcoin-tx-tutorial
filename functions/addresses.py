@@ -39,6 +39,7 @@ def pk_to_p2pkh(compressed: bytes, network: str):
     return encode_base58_checksum(prefix + pk_hash)
 
 def script_to_p2sh(redeemScript, network):
+    '''Creates a p2sh base58 address corresponding to a redeemScript'''
     rs_hash = hash160(redeemScript)
     if network == "regtest" or network == "testnet":
         prefix = bytes.fromhex("c4")
@@ -50,9 +51,25 @@ def script_to_p2sh(redeemScript, network):
 
 ## Segwit
 def pk_to_p2wpkh(compressed, network):
-    '''generates a p2wpkh bech32 address corresponding to a compressed pubkey'''
+    '''Creates a p2wpkh bech32 address corresponding to a compressed pubkey'''
     pk_hash = hash160(compressed)
     spk = bytes.fromhex("0014") + pk_hash
+    version = spk[0] - 0x50 if spk[0] else 0
+    program = spk[2:]
+    if network == "testnet":
+        prefix = 'tb'
+    if network == "regtest":
+        prefix = 'bcrt'
+    elif network == "mainnet":
+        prefix = 'bc'
+    else:
+        return "Enter the network: testnet/regtest/mainnet"
+    return bech32.encode(prefix, version, program)
+
+def script_to_p2wsh(redeemScript, network):
+    '''Creates a p2wsh bech32 address corresponding to a redeemScript'''
+    script_hash = hashlib.sha256(redeemScript).digest()
+    spk = bytes.fromhex("0020") + script_hash
     version = spk[0] - 0x50 if spk[0] else 0
     program = spk[2:]
     if network == "testnet":
