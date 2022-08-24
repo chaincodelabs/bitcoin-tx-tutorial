@@ -2,6 +2,7 @@
 from functions.hashfunctions import *
 import base58
 import ecdsa
+import bech32
 
 def privkey_to_pubkey(privkey: bytes):
     '''Converts a private key (bytes) to a compressed pubkey (bytes)'''
@@ -51,8 +52,7 @@ def script_to_p2sh(redeemScript, network):
 def pk_to_p2wpkh(compressed, network):
     '''generates a p2wpkh bech32 address corresponding to a compressed pubkey'''
     pk_hash = hash160(compressed)
-    redeemScript = bytes.fromhex(f"0014{pk_hash.hex()}")
-    spk = binascii.unhexlify(redeemScript.hex())
+    spk = bytes.fromhex("0014") + pk_hash
     version = spk[0] - 0x50 if spk[0] else 0
     program = spk[2:]
     if network == "testnet":
