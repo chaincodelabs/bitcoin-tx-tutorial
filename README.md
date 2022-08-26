@@ -1,6 +1,30 @@
 # bitcoin-tx-tutorial
 
-This repo contains a series of python jupyter-notebooks to explain how bitcoin transactions are created and signed. The notebooks will start up an instance of bitcoind in regtest mode so that transactions can be validated and broadcasted on regtest. Each notebook has some questions and exercises to test your understanding. 
+This repo contains a series of python jupyter-notebooks to explain how bitcoin transactions are created and signed. The notebooks will start up an instance of bitcoind in regtest mode so that transactions can be validated and broadcasted on regtest. Each notebook has some questions and exercises to test your understanding.
+
+## Chapters
+
++ Chapter 1: 'Introduction'
+  - 'Example transaction'
++ Chapter 2: 'Background'
+  - '[Hash Functions](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/hash-functions.ipynb)'
+  - '[Bitcoin Script](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/Bitcoin%20Script.ipynb)'
+  - '[Addresses](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/Addresses.ipynb)'
++ Chapter 3: 'Legacy Transactions (Pre-Segwit)'
+  - '[P2PKH - Pay to Pubkey Hash](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/p2pkh.ipynb)'
+  - '[P2SH - Pay to Script Hash (2-of-3 Mulitisig)](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/p2sh%20(multisig).ipynb)'
++ Chapter 4: 'Segwit'
+  - '[P2WPKH - Pay to Witness Pubkey Hash](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/p2wpkh.ipynb)'
+  - '[P2WSH - Pay to Witness Script Hash (2-of-2 Multisig)](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/p2wsh%20(2-of-2%20multisig).ipynb)'
++ Chapter 5: 'Taproot'
+  -  'Musig, Tapscript, Taptweak, Taptree'
+  -  'Hash functions'
++ Chapter 6: 'Sighash Types'
++ Chapter 7: 'Transactions with Multiple Inputs'
++ Chapter 8: 'Bitcoin 'Smart Contracts''
+  - 'Timelocks'
+  - 'Advanced Bitcoin Scripts'
+
 
 ## Setup
 This project requires Python 3.6 (or greater) to be [installed](https://www.python.org/downloads/) on your machine already. All other dependencies will be installed automatically with pip3.
