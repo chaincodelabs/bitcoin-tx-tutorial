@@ -23,6 +23,8 @@ This repo contains a series of python jupyter-notebooks to explain how bitcoin t
 + Chapter 7: 'Transactions with Multiple Inputs'
 + Chapter 8: 'Bitcoin 'Smart Contracts''
   - 'Timelocks'
+    - '[Transaction-level timelocks](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/transaction_level_timelocks.ipynb)'
+    - 'Script-level timelocks'
   - 'Advanced Bitcoin Scripts'
 
 
