@@ -19,12 +19,12 @@ This repo contains a series of python jupyter-notebooks to explain how bitcoin t
 + Chapter 5: 'Taproot'
   -  'Musig, Tapscript, Taptweak, Taptree'
   -  'Hash functions'
-+ Chapter 6: 'Sighash Types'
-+ Chapter 7: 'Transactions with Multiple Inputs'
++ Chapter 6: 'Transactions with Multiple Inputs'
++ Chapter 7: 'Sighash Types'
 + Chapter 8: 'Bitcoin 'Smart Contracts''
   - 'Timelocks'
     - '[Transaction-level timelocks](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/transaction_level_timelocks.ipynb)'
-    - 'Script-level timelocks'
+    - '[Script-level timelocks](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/script_level_timelocks.ipynb)'
   - 'Advanced Bitcoin Scripts'
 
 
