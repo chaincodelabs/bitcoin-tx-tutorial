@@ -6,9 +6,11 @@ import os
 import subprocess
 import time
 
+CLI = "bitcoin-cli -regtest"
+
 def setup_regtest_bitcoind() -> str:
     # Make sure bitcoind is not already running
-    os.system("bitcoin-cli -regtest stop")
+    os.system(f"{CLI} stop")
     time.sleep(2)
 
     # Delete any previous files to restart regtest
@@ -19,25 +21,25 @@ def setup_regtest_bitcoind() -> str:
     time.sleep(1.5)
 
     # Create a new wallet and address that we can mine blocks so that we can fund our transactions
-    wallet = subprocess.getoutput("bitcoin-cli -regtest createwallet mywallet")
-    mining_address = subprocess.getoutput("bitcoin-cli -regtest getnewaddress")
+    wallet = subprocess.getoutput(f"{CLI} createwallet mywallet")
+    mining_address = subprocess.getoutput(f"{CLI} getnewaddress")
 
     # Generate 101 blocks so that the first block's block reward reaches maturity
-    result = subprocess.getoutput(f"bitcoin-cli -regtest generatetoaddress 101 {mining_address}")
+    result = subprocess.getoutput(f"{CLI} generatetoaddress 101 {mining_address}")
 
     # Check that we were able to mine 101 blocks
-    blockcount = subprocess.getoutput("bitcoin-cli -regtest getblockcount")
+    blockcount = subprocess.getoutput(f"{CLI} getblockcount")
     assert(blockcount == "101")
 
     return mining_address
 
 def fund_address(address: str, amount: float) -> str:
-    txid = subprocess.getoutput(f"bitcoin-cli -regtest sendtoaddress {address} {amount}")
+    txid = subprocess.getoutput(f"{CLI} sendtoaddress {address} {amount}")
     return txid
 
 def get_utxo_index(address: str, txid: str) -> int:
-    raw_tx = subprocess.getoutput(f"bitcoin-cli -regtest getrawtransaction {txid}")
-    decoded = subprocess.getoutput(f"bitcoin-cli -regtest decoderawtransaction {raw_tx}")
+    raw_tx = subprocess.getoutput(f"{CLI} getrawtransaction {txid}")
+    decoded = subprocess.getoutput(f"{CLI} decoderawtransaction {raw_tx}")
     d = json.loads(decoded)
     if d["vout"][0]["scriptPubKey"]["address"] == address:
         index = 0
@@ -53,6 +55,6 @@ def create_regtest_utxo(address: str, amount: float) -> tuple([str, int]):
     index = get_utxo_index(address, txid)
 
     # Mine a block to confirm the tx
-    subprocess.getoutput(f"bitcoin-cli -regtest generatetoaddress 1 {mining_address}")
+    subprocess.getoutput(f"{CLI} generatetoaddress 1 {mining_address}")
 
     return (txid, index)
