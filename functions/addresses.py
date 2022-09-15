@@ -1,5 +1,6 @@
 # Covered in addresses.ipynb
 from functions.hashfunctions import *
+from functions.script import *
 import base58
 import ecdsa
 import bech32
@@ -93,3 +94,12 @@ def pk_to_p2sh_p2wpkh(compressed, network):
     else:
         return "Enter the network: tesnet/regtest/mainnet"
     return encode_base58_checksum(prefix + rs_hash)
+
+def bech32_to_spk(hrp, address):
+    witver, witprog = bech32.decode(hrp, address)
+    pubkey_hash = bytearray(witprog)
+    return (
+        witver.to_bytes(1, byteorder="little", signed=False)
+        + varint_len(pubkey_hash)
+        + pubkey_hash
+    )
