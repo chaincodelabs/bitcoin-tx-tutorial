@@ -19,7 +19,7 @@ This repo contains a series of python jupyter-notebooks to explain how bitcoin t
 + Chapter 5: 'Taproot'
   -  'Musig, Tapscript, Taptweak, Taptree'
   -  'Hash functions'
-+ Chapter 6: 'Transactions with Multiple Inputs'
++ Chapter 6: '[Transactions with Multiple Inputs](multiple_inputs_outputs.ipynb)'
 + Chapter 7: 'Sighash Types'
 + Chapter 8: 'Bitcoin 'Smart Contracts''
   - 'Timelocks'
