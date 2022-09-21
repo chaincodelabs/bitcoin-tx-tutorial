@@ -129,3 +129,47 @@ def schnorr_verify(msg: bytes, pubkey: bytes, sig: bytes) -> bool:
     if (R is None) or (not has_even_y(R)) or (x(R) != r):
         return False
     return True
+
+#################
+SECP256K1_ORDER = n
+
+def taproot_tweak_pubkey(pubkey, h):
+    t = int_from_bytes(tagged_hash("TapTweak", pubkey + h))
+    if t >= SECP256K1_ORDER:
+        raise ValueError
+    Q = point_add(lift_x(int(pubkey)), point_mul(G, t))
+    return 0 if has_even_y(Q) else 1, bytes_from_int(x(Q))
+
+def taproot_tweak_seckey(seckey0, h):
+    P = point_mul(G, int_from_bytes(seckey0))
+    seckey = seckey0 if has_even_y(P) else SECP256K1_ORDER - seckey0
+    t = int_from_bytes(tagged_hash("TapTweak", bytes_from_int(x(P)) + h))
+    if t >= SECP256K1_ORDER:
+        raise ValueError
+    return (seckey + t) % SECP256K1_ORDER
+
+def taproot_tree_helper(script_tree):
+    if isinstance(script_tree, tuple):
+        leaf_version, script = script_tree
+        h = tagged_hash("TapLeaf", bytes([leaf_version]) + ser_script(script))
+        return ([((leaf_version, script), bytes())], h)
+    left, left_h = taproot_tree_helper(script_tree[0])
+    right, right_h = taproot_tree_helper(script_tree[1])
+    ret = [(l, c + right_h) for l, c in left] + [(l, c + left_h) for l, c in right]
+    if right_h < left_h:
+        left_h, right_h = right_h, left_h
+    return (ret, tagged_hash("TapBranch", left_h + right_h))
+
+def taproot_output_script(internal_pubkey, script_tree):
+    """Given a internal public key and a tree of scripts, compute the output script.
+    script_tree is either:
+     - a (leaf_version, script) tuple (leaf_version is 0xc0 for [[bip-0342.mediawiki|BIP342]] scripts)
+     - a list of two elements, each with the same structure as script_tree itself
+     - None
+    """
+    if script_tree is None:
+        h = bytes()
+    else:
+        _, h = taproot_tree_helper(script_tree)
+    _, output_pubkey = taproot_tweak_pubkey(internal_pubkey, h)
+    return bytes([0x51, 0x20]) + output_pubkey
