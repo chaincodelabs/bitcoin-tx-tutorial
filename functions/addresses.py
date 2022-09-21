@@ -3,7 +3,6 @@ from functions.hashfunctions import *
 from functions.script import *
 import base58
 import ecdsa
-import bech32
 
 def privkey_to_pubkey(privkey: bytes):
     '''Converts a private key (bytes) to a compressed pubkey (bytes)'''
@@ -17,6 +16,23 @@ def privkey_to_pubkey(privkey: bytes):
     else:
         compressed_pubkey = bytes.fromhex("03") + x_cor
     return compressed_pubkey
+
+def privkey_to_wif(privkey, compressed_pubkey, testnet):
+    '''
+    Converts a private key (bytes) into a wallet import format
+    https://en.bitcoin.it/wiki/Wallet_import_format
+    '''
+    if testnet:
+        prefix = b"\xEF"
+    else:
+        prefix = b"\x80"
+    # if the privkey will correspond to a compressed public key
+    if compressed_pubkey:
+        extended = prefix + privkey + b"\x01"
+    else:
+        extended = prefix + privkey
+    return encode_base58_checksum(extended)
+
 
 ## Base58
 def encode_base58_checksum(b: bytes):
