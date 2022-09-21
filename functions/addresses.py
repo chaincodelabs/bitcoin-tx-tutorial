@@ -1,6 +1,7 @@
 # Covered in addresses.ipynb
 from functions.hashfunctions import *
 from functions.script import *
+import functions.bip_350_bech32_reference as bech32
 import base58
 import ecdsa
 
@@ -66,11 +67,9 @@ def script_to_p2sh(redeemScript, network):
         return "Enter the network: tesnet/regtest/mainnet"
     return encode_base58_checksum(prefix + rs_hash)
 
-## Segwit
-def pk_to_p2wpkh(compressed, network):
-    '''Creates a p2wpkh bech32 address corresponding to a compressed pubkey'''
-    pk_hash = hash160(compressed)
-    spk = bytes.fromhex("0014") + pk_hash
+# bech32
+def spk_to_bech32(spk, network):
+    '''Creates a bech32m address corresponding to a scriptPubkey'''
     version = spk[0] - 0x50 if spk[0] else 0
     program = spk[2:]
     if network == "testnet":
@@ -83,21 +82,27 @@ def pk_to_p2wpkh(compressed, network):
         return "Enter the network: testnet/regtest/mainnet"
     return bech32.encode(prefix, version, program)
 
+def bech32_to_spk(hrp, address):
+    witver, witprog = bech32.decode(hrp, address)
+    pubkey_hash = bytearray(witprog)
+    return (
+        witver.to_bytes(1, byteorder="little", signed=False)
+        + varint_len(pubkey_hash)
+        + pubkey_hash
+    )
+
+## Segwit
+def pk_to_p2wpkh(compressed, network):
+    '''Creates a p2wpkh bech32 address corresponding to a compressed pubkey'''
+    pk_hash = hash160(compressed)
+    spk = bytes.fromhex("0014") + pk_hash
+    return spk_to_bech32(spk, network)
+
 def script_to_p2wsh(redeemScript, network):
     '''Creates a p2wsh bech32 address corresponding to a redeemScript'''
     script_hash = hashlib.sha256(redeemScript).digest()
     spk = bytes.fromhex("0020") + script_hash
-    version = spk[0] - 0x50 if spk[0] else 0
-    program = spk[2:]
-    if network == "testnet":
-        prefix = 'tb'
-    if network == "regtest":
-        prefix = 'bcrt'
-    elif network == "mainnet":
-        prefix = 'bc'
-    else:
-        return "Enter the network: testnet/regtest/mainnet"
-    return bech32.encode(prefix, version, program)
+    return spk_to_bech32(spk, network)
 
 def pk_to_p2sh_p2wpkh(compressed, network):
     pk_hash = hash160(compressed)
@@ -110,12 +115,3 @@ def pk_to_p2sh_p2wpkh(compressed, network):
     else:
         return "Enter the network: tesnet/regtest/mainnet"
     return encode_base58_checksum(prefix + rs_hash)
-
-def bech32_to_spk(hrp, address):
-    witver, witprog = bech32.decode(hrp, address)
-    pubkey_hash = bytearray(witprog)
-    return (
-        witver.to_bytes(1, byteorder="little", signed=False)
-        + varint_len(pubkey_hash)
-        + pubkey_hash
-    )
