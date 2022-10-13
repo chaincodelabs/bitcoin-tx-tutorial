@@ -18,15 +18,13 @@ This repo contains a series of python jupyter-notebooks to explain how bitcoin t
   - '[P2WPKH - Pay to Witness Pubkey Hash](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/p2wpkh.ipynb)'
   - '[P2WSH - Pay to Witness Script Hash (2-of-2 Multisig)](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/p2wsh%20(2-of-2%20multisig).ipynb)'
 + Chapter 5: 'Taproot'
-  -  'Musig, Tapscript, Taptweak, Taptree'
-  -  'Hash functions'
+  -  '[P2TR - Key path and Script path spends](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/p2tr-key-and-script-path.ipynb)'
 + Chapter 6: '[Transactions with Multiple Inputs](multiple_inputs_outputs.ipynb)'
 + Chapter 7: 'Sighash Types'
 + Chapter 8: 'Bitcoin 'Smart Contracts''
   - 'Timelocks'
     - '[Transaction-level timelocks](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/transaction_level_timelocks.ipynb)'
     - '[Script-level timelocks](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/script_level_timelocks.ipynb)'
-  - 'Advanced Bitcoin Scripts'
 
 
 ## Setup
