@@ -5,7 +5,7 @@ This repo contains a series of python jupyter-notebooks to explain how bitcoin t
 ## Chapters
 
 + Chapter 1: 'Introduction'
-  - 'Example transaction'
+  - '[The first bitcoin transaction](first_btc_tx.ipynb)'
 + Chapter 2: 'Background'
   - '[Elliptic Curve Math Review](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/elliptic_curve_math_review.ipynb)'
   - '[Hash Functions](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/hash-functions.ipynb)'
