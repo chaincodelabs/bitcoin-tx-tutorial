@@ -22,6 +22,7 @@ This repo contains a series of python jupyter-notebooks to explain how bitcoin t
 + Chapter 6: '[Transactions with Multiple Inputs](multiple_inputs_outputs.ipynb)'
 + Chapter 7: 'Signature hashes'
   - '[Signature hash evolution](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/sighash_evolution.ipynb)'
+  - '[Signature hash flags](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/sighash_flags.ipynb)'
 + Chapter 8: 'Bitcoin 'Smart Contracts''
   - 'Timelocks'
     - '[Transaction-level timelocks](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/transaction_level_timelocks.ipynb)'
