@@ -18,6 +18,8 @@ This repo contains a series of python jupyter-notebooks to explain how bitcoin t
   - '[P2WPKH - Pay to Witness Pubkey Hash](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/p2wpkh.ipynb)'
   - '[P2WSH - Pay to Witness Script Hash (2-of-2 Multisig)](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/p2wsh%20(2-of-2%20multisig).ipynb)'
 + Chapter 5: 'Taproot'
+  - '[Schnorr signatures and TapTweaks](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/schnorr_sig_and_taptweak.ipynb)'
+  - '[TapTrees](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/taproot_taptree.ipynb)'
   - '[P2TR - Key path and Script path spends](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/p2tr-key-and-script-path.ipynb)'
 + Chapter 6: '[Transactions with Multiple Inputs](multiple_inputs_outputs.ipynb)'
 + Chapter 7: 'Signature hashes'
