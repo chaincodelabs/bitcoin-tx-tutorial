@@ -66,5 +66,5 @@ jupyter notebook
 - This work wouldn't have been possible without the funding from [chaincode](https://chaincode.com).
 - A lot of the code and inspiration for this tutorial comes from the following places:
   - Shlomi Zeltsinger's [segwit tutorial](https://github.com/zeltsi/segwit_tutorial/tree/master/transactions)
-  - Jimmy Song's [Programming Bitcoin exercises](https://github.com/jimmysong/pb-exercises/blob/master/LICENSE).
+  - Jimmy Song's [Programming Bitcoin exercises](https://github.com/jimmysong/pb-exercises).
   - Bitcoin Optech [Schnorr Taproot Workshop](https://bitcoinops.org/en/schorr-taproot-workshop/)
