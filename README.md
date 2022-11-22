@@ -2,6 +2,11 @@
 
 This repo contains a series of python jupyter-notebooks to explain how bitcoin transactions are created and signed. The notebooks will start up an instance of bitcoind in regtest mode so that transactions can be validated and broadcasted on regtest. Each notebook has some questions and exercises to test your understanding.
 
+## Prerequisite knowledge
+- A high level understanding of the bitcoin. e.g. [Mastering Bitcoin](https://github.com/bitcoinbook/bitcoinbook) by Andreas Antonopoulos UTXO model, in particular [Chapter 6](https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch06.asciidoc).
+- A conceptual understanding of [hash functions](https://www.thesslstore.com/blog/what-is-a-hash-function-in-cryptography-a-beginners-guide).
+- [Hexadecimal notation](https://inst.eecs.berkeley.edu/~cs61bl/r//cur/bits/decimal-binary-hex.html?topic=lab28.topic&step=2&course=) and [endianness](https://www.freecodecamp.org/news/what-is-endianness-big-endian-vs-little-endian/).
+
 ## Chapters
 
 + Chapter 1: 'Introduction'
