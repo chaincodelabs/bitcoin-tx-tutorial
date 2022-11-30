@@ -10,7 +10,7 @@ This repo contains a series of python jupyter-notebooks to explain how bitcoin t
 ## Chapters
 
 + Chapter 1: 'Legacy Transactions'
-  - '[The First Bitcoin Transactin (Pay to Pubkey)](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/chapter1-legacy/first-btc-tx.ipynb)'
+  - '[The First Bitcoin Transaction (Pay to Pubkey)](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/chapter1-legacy/first-btc-tx.ipynb)'
   - '[P2PKH - Pay to Pubkey Hash](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/chapter1-legacy/p2pkh.ipynb)'
   - '[P2SH - Pay to Script Hash (2-of-3 Mulitisig)](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/chapter1-legacy/p2sh-multisig.ipynb)'
 + Chapter 2: 'Segwit v0'
