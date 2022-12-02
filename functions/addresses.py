@@ -1,7 +1,7 @@
 # Covered in addresses.ipynb
 from functions.hashfunctions import *
 from functions.script import *
-import functions.bip_350_bech32_reference as bech32
+import functions.bip_350_bech32_reference as b32
 import base58
 import ecdsa
 
@@ -67,28 +67,28 @@ def script_to_p2sh(redeemScript, network):
         return "Enter the network: tesnet/regtest/mainnet"
     return encode_base58_checksum(prefix + rs_hash)
 
-# bech32
+# bech32/bech32m
 def spk_to_bech32(spk, network):
-    '''Creates a bech32m address corresponding to a scriptPubkey'''
+    '''Creates a bech32 or bech32m address corresponding to a scriptPubkey'''
     version = spk[0] - 0x50 if spk[0] else 0
     program = spk[2:]
     if network == "testnet":
         prefix = 'tb'
-    if network == "regtest":
+    elif network == "regtest":
         prefix = 'bcrt'
     elif network == "mainnet":
         prefix = 'bc'
     else:
         return "Enter the network: testnet/regtest/mainnet"
-    return bech32.encode(prefix, version, program)
+    return b32.encode(prefix, version, program)
 
 def bech32_to_spk(hrp, address):
-    witver, witprog = bech32.decode(hrp, address)
+    '''Decodes a bech32 or bech32m address to a scriptPubkey'''
+    witver, witprog = b32.decode(hrp, address)
     pubkey_hash = bytearray(witprog)
     return (
         witver.to_bytes(1, byteorder="little", signed=False)
-        + varint_len(pubkey_hash)
-        + pubkey_hash
+        + pushbytes(pubkey_hash)
     )
 
 ## Segwit
