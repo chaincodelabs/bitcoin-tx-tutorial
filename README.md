@@ -29,8 +29,8 @@ This repo contains a series of python jupyter-notebooks to explain how bitcoin t
 + Appendix:
   - '[Elliptic Curve Math Review](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/appendix/elliptic_curve_math_review.ipynb)'
   - '[Hash Functions](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/appendix/hash-functions.ipynb)'
-  - '[Bitcoin Script](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/appendix/Bitcoin%20Script.ipynb)'
-  - '[Addresses](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/appendix/Addresses.ipynb)'
+  - '[Bitcoin Script](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/appendix/bitcoin_script.ipynb)'
+  - '[Addresses](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/appendix/addresses.ipynb)'
 
 ## Setup
 This project requires Python 3.6 (or greater) to be [installed](https://www.python.org/downloads/) on your machine already. All other dependencies will be installed automatically with pip3.
