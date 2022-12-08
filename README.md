@@ -33,6 +33,7 @@ This repo contains a series of python jupyter-notebooks to explain how bitcoin t
   - '[Addresses](https://github.com/DariusParvin/bitcoin-tx-tutorial/blob/main/appendix/addresses.ipynb)'
 
 ## Setup
+### Python3
 This project requires Python 3.6 (or greater) to be [installed](https://www.python.org/downloads/) on your machine already. All other dependencies will be installed automatically with pip3.
 
 To verify your Python version, run
@@ -62,6 +63,9 @@ Finally, to launch the interactive notebook:
 ```sh
 jupyter notebook
 ```
+### Bitcoin core
+The notebooks in this repo use bitcoin core's `TestShell` from its test framework. The `TestShell` is used to create a local test instance of a bitcoin node (and blockchain) against which we can test our manually created transactions. The notebooks in this repo have been tested with [bitcoin core v24](https://github.com/bitcoin/bitcoin/releases/tag/v24.0).
+
 
 ## Acknowledgements
 - This work wouldn't have been possible without the funding from [chaincode](https://chaincode.com).
