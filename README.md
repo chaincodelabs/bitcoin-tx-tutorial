@@ -64,7 +64,18 @@ Finally, to launch the interactive notebook:
 jupyter notebook
 ```
 ### Bitcoin core
-The notebooks in this repo use bitcoin core's `TestShell` from its test framework. The `TestShell` is used to create a local test instance of a bitcoin node (and blockchain) against which we can test our manually created transactions. The notebooks in this repo have been tested with [bitcoin core v24.0.1](https://github.com/bitcoin/bitcoin/releases/tag/v24.0.1).
+
+The notebooks in this repo require `bitcoind` and have been tested with [bitcoin core v24.0.1](https://github.com/bitcoin/bitcoin/releases/tag/v24.0.1).
+
+We use [`TestShell`](https://github.com/bitcoin/bitcoin/blob/master/test/functional/test-shell.md), a wrapper of the `BitcoinTestFramework` that extends its functionality in external interactive environments, such as jupyter notebooks.
+The `TestShell` is used to create a local test instance of a bitcoin node (and blockchain) against which we can test our manually created transactions.
+
+In order for this to work, you need to add the path of your Bitcoin Core directory to the `config.ini` file.
+For example, set:
+
+```
+SOURCE_DIRECTORY=/Users/username/bitcoin
+```
 
 
 ## Acknowledgements

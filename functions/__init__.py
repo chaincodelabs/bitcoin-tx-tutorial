@@ -1,3 +1,4 @@
+import functions.setup_notebook
 from functions.addresses import *
 # from functions.create_regtest_utxo import *
 from functions.setup_testshell import *
