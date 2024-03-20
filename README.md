@@ -66,6 +66,9 @@ jupyter notebook
 ### Bitcoin core
 The notebooks in this repo use bitcoin core's `TestShell` from its test framework. The `TestShell` is used to create a local test instance of a bitcoin node (and blockchain) against which we can test our manually created transactions. The notebooks in this repo have been tested with [bitcoin core v24.0.1](https://github.com/bitcoin/bitcoin/releases/tag/v24.0.1).
 
+## Useful resources
+- [bitcoin-tx-color-coder](https://dariusparvin.github.io/bitcoin-tx-color-coder/): A tool for decoding raw transactions. It color-codes and interprets the bytes, similar to the examples in this tutorial. 
+- [BitcoinIDE](https://siminchen.github.io/bitcoinIDE/build/editor.html): Allows testing of Bitcoin stack operations and script analysis. Useful for understanding script evaluations. 
 
 ## Acknowledgements
 - This work wouldn't have been possible without the funding from [chaincode](https://chaincode.com).
